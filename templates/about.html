@@ -1,0 +1,78 @@
+{% load static %}
+{% static "images" as BaseUrl %}
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="manopo, about MANOPO">
+    <meta name="description" content="">
+    <meta name="page_type" content="np-template-header-footer-from-plugin">
+    <title>MANOPO</title>
+    <link rel="icon" href="{% static 'images/Earth2.jpg' %}">
+    <link rel="stylesheet" href="{% static 'css\about2.css' %}" media="screen">
+<link rel="stylesheet" href="{% static 'css\about.css' %}" media="screen">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+    
+    
+
+    <meta property="og:title" content="Home">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#478ac9">
+  </head>
+  <body class="u-body"><header class="u-clearfix u-header u-palette-4-dark-3 u-header" id="sec-6afe"><div class="u-clearfix u-sheet u-sheet-1">
+        <a href="/search/" class="u-image u-logo u-image-1" data-image-width="1000" data-image-height="1000">
+          <img src="{% static 'images/logo.png' %}" class="u-logo-image u-logo-image-1" data-image-width="64">
+        </a>
+        <h1 class="u-text u-text-default u-text-1">manopo</h1>
+      </div></header>
+    <section class="u-clearfix u-palette-4-base u-section-1" id="carousel_1407">
+      <div class="u-clearfix u-sheet u-valign-middle-lg u-valign-middle-md u-valign-middle-xl u-sheet-1">
+        <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
+          <div class="u-layout">
+            <div class="u-layout-row">
+              <div class="u-container-style u-layout-cell u-size-22 u-layout-cell-1">
+                <div class="u-container-layout u-container-layout-1">
+                  <h1 class="u-text u-text-1">about MANOPO</h1>
+                  <h6 class="u-text u-text-body-color u-text-2">Hello {{user}} <br>MANOPO is a s​imple webapp to know the way to the house which you are looking for in a unknown place.<br>More like a Way finder<br>
+                    <br>you can find it by searching the name of person or house in home page.<br>It also shows the Gaurdian, family members and phone number of each of them.<br>
+                    <br>
+                    <br>Usage:<br>After Successfully Creating a account,you are able search,view and create family members in MANOPO.<br>You can only edit Members that you created but you can view details which other users are Created. <span style="font-weight: 700;"></span>
+                    <br>Images are set to default if you dont want to upload images.
+                  </h6>
+                </div>
+              </div>
+              <div class="u-align-left u-container-style u-image u-layout-cell u-size-21 u-image-1" data-image-width="690" data-image-height="878">
+                <!-- <img src="example.gif" alt="Example" width="200" height="100"> -->
+
+                  <img style="  min-height: 313px;
+
+                  background-position: 50% 50%;" src="{% static 'images/image.jpg' %}" alt="" width="100%" height="60%">
+
+              </div>
+              <div class="u-container-style u-layout-cell u-size-17 u-layout-cell-3">
+                <div class="u-container-layout u-valign-top u-container-layout-3">
+                  <p class="u-text u-text-body-color u-text-3">
+                    <span style="font-weight: 700;">Created By:<br>M Nabeel<br>Shaheef Abdulla
+                    </span>
+                    <br>
+                    <br>Its a simple project created in covid lockdown 2021.To improve our skill and thinking.<br>However, if you’re facing any issues or you have an idea to apply.Do email us<br>
+                    <br>manopo.tech@gmail.com
+                  </p>
+                  <div class="u-shape u-shape-rectangle u-white u-shape-1"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+
+  </body>
+  <footer style="position:relative;
+  bottom:-40%;
+  width:100%;
+  height:60px;   /* Height of the footer */
+  background:#6cf;" > Please Make sure to provide Valid information.<br>we will be not responsible for misusing this webapp.Although your IP will be tracked.</footer>
+</html>

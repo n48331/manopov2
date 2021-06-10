@@ -1,0 +1,166 @@
+
+/* Neumorphic */
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  /* user-select: none; */
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* themecolor */
+/*
+
+#17252A
+#2B7A7B
+
+#3AAFA9
+
+#DEF2F1
+#FEFFFF 
+
+*/
+
+html,body{
+  height: 100%;
+}
+body{
+  display: grid;
+  place-items: center;
+  background: #2B7A7B;
+  text-align: center;
+}
+.content{
+  width: 330px;
+  padding: 40px 30px;
+  background: #2B7A7B;
+  border-radius: 10px;
+  box-shadow: -3px -3px 7px #3AAFA973,
+               2px 2px 5px #17252abe
+}
+.content .text{
+  font-size: 33px;
+  font-weight: 600;
+  margin-bottom: 35px;
+  color: #17252A;
+}
+.field{
+  height: 50px;
+  width: 100%;
+  display: flex;
+  position: relative;
+}
+.field:nth-child(2){
+  margin-top: 20px;
+}
+.field input{
+  height: 100%;
+  width: 100%;
+  padding-left: 45px;
+  outline: none;
+  border: none;
+  font-size: 18px;
+  background: #2B7A7B;
+  color: #17252A;
+  border-radius: 25px;
+  box-shadow: inset 2px 2px 5px #17252a2f,
+              inset -5px -5px 10px #17252a1a;
+}
+.field input:focus{
+  box-shadow: inset 1px 1px 2px #07afec3d,
+              inset -1px -1px 2px #2b2e303d;
+  /* box-shadow: 2px 2px 5px #1642409c,
+             -5px -5px 10px #3aafa994; */
+
+            }
+.field span{
+  position: absolute;
+  color: #17252A;
+  width: 50px;
+  line-height: 50px;
+}
+.field label{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 45px;
+  pointer-events: none;
+  color: #000000b2;
+}
+.field input:valid ~ label{
+  opacity: 0;
+}
+.forgot-pass{
+  text-align: left;
+  margin: 10px 0 10px 5px;
+}
+.forgot-pass a{
+  font-size: 16px;
+  color: #17252A;
+  text-decoration: none;
+}
+.forgot-pass:hover a{
+  text-decoration: underline;
+}
+button{
+  margin: 15px 0;
+  width: 100%;
+  height: 50px;
+  font-size: 18px;
+  line-height: 50px;
+  font-weight: 600;
+  background: #2B7A7B;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #17252A;
+  box-shadow: 2px 2px 5px #1642409c,
+             -5px -5px 10px #3aafa994;
+}
+button:focus{
+  color: #3AAFA9;
+  box-shadow: inset 2px 2px 5px #2B7A7B,
+             inset -5px -5px 10px #3AAFA973;
+}
+.sign-up{
+  margin: 10px 0;
+  color: #DEF2F1 ;
+  font-size: 16px;
+}
+.sign-up a{
+  color: #17252A;
+  text-decoration: none;
+}
+.sign-up a:hover{
+  text-decoration: underline;
+}
+
+
+/* text */
+
+.textbits{
+
+margin-top:100px;
+border-radius:4px;
+font-size:60px;
+font-weight:bold;
+
+color:#2B7A7B;
+text-shadow: 2px 2px 8px  #0b3a34a1,
+ -2px -2px 8px #bac4c3a4;
+}
+
+/* themecolor */
+/*
+
+#17252A
+#2B7A7B
+
+#3AAFA9
+
+#DEF2F1
+#FEFFFF 
+
+*/

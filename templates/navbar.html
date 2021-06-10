@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Bottom  Navbar with awesome hover effect.</title>
+  <link rel="stylesheet" href="./navbar.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="{% static 'images/Earth2.jpg' %}">
+    <title>Navbar</title>
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="navigation">
+      <ul>
+        <li class="list active" data-color="#dc143c">
+          <a href="#">
+            <span class="icon"><i class="far fa-home"></i></span>
+            <span class="title">Home</span>
+          </a>
+        </li>
+        <li class="list" data-color="#3c40c6">
+          <a href="#">
+            <span class="icon"><i class="far fa-info"></i></span>
+            <span class="title">About</span>
+          </a>
+        </li>
+        <li class="list" data-color="#05c46b">
+          <a href="#">
+            <span class="icon"><i class="far fa-comment"></i></span>
+            <span class="title">Messages</span>
+          </a>
+        </li>
+        <li class="list" data-color="#0fbcf9">
+          <a href="#">
+            <span class="icon"><i class="far fa-question-circle"></i></span>
+            <span class="title">Help</span>
+          </a>
+        </li>
+        <li class="list" data-color="#ffa801">
+          <a href="#">
+            <span class="icon"><i class="far fa-cog"></i></span>
+            <span class="title">Settings</span>
+          </a>
+        </li>
+        <div class="indicator"></div>
+      </ul>
+    </div>
+    <script>
+      let list = document.querySelectorAll(".list");
+      for (let i = 0; i < list.length; i++) {
+        list[i].onmouseover = function () {
+          let j = 0;
+          while (j < list.length) {
+            list[j++].className = "list";
+          }
+          list[i].className = "list active";
+        };
+      }
+      list.forEach((elements) => {
+        elements.addEventListener("mouseenter", function (event) {
+          let bg = document.querySelector("body");
+          let color = event.target.getAttribute("data-color");
+          bg.style.backgroundColor = color;
+        });
+      });
+    </script>
+  </body>
+</html>
+<!-- partial -->
+  
+</body>
+</html>

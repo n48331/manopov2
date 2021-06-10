@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="{% static 'images/Earth2.jpg' %}">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Monopo login</title>
+  <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
+
+<!-- partial -->
+<div style="  margin-left: auto;
+margin-right: 50%;
+width:100%;
+margin-top:10px;
+text-align:center;"> <span class='textbits'>MANOPO</span></div>
+
+<div class="content">
+
+	<div class="text">
+Login</div>
+<form action="login" method="POST">{% csrf_token %}
+	
+	  <div class="field">
+		<input type="text" name="username" required>
+		<span class="fas fa-user"></span>
+		<label>Username</label>
+	  </div><br>
+<div class="field">
+		<input type="password" name="password" required>
+		<span class="fas fa-lock"></span>
+		<label>Password</label>
+	  </div>
+<div class="forgot-pass">
+<a href="reset_password">Forgot Password?</a></div>
+<button>Sign in</button>
+	  <div class="sign-up">
+Not a member?
+		<a href="{% url 'signup' %}">signup now</a>
+	  </div>
+</form>
+
+<div>
+	{% for message in messages %}
+	<h3> {{message}}  </h3>
+	{% endfor %}
+	
+</div>
+</div>
+<span class="fas fa-user"></span>
+		<label>Currently made only for Feroke,Chungam,Calicut,Kerala,673631</label>
+
+		<footer >
+
+			<!-- Copyright -->
+			<br><br><div >© 2021 Copyright:
+			  <a style="color: rgb(4, 17, 75);" href="{% url 'login' %}"> manopo</a>
+			</div>
+			
+			<!-- Copyright -->
+		  
+		  </footer>
+</body>
+</html>

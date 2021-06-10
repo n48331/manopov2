@@ -1,0 +1,157 @@
+body,html {
+    font-family: "Archivo Black", sans-serif;
+    /* background-color: #10f5c3; */
+    margin: 0;
+    background-color: #3AAFA9;
+
+    /* Animation */
+
+
+
+
+}
+
+/* Animation Manopo */
+
+.words {
+    color: #3AAFA9;
+    text-align: center;
+    font-size: 0;
+    line-height: 1.5;
+    top: 0;
+    /* left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
+
+  }
+  
+  .words span {
+    font-size: 5rem;
+    display: inline-block;
+    animation: move 3s ease-in-out infinite;
+  }
+  
+  @keyframes move {
+    0% {
+      transform: translate(-30%, 0);
+    }
+    50% {
+      text-shadow: 0 25px 60px rgba(0, 0, 0, 0.788);
+    }
+    100% {
+      transform: translate(30%, 0);
+    }
+  }
+  
+  .words span:nth-child(2) {
+    animation-delay: 0.5s;
+  }
+  
+  .words span:nth-child(3) {
+    animation-delay: 1s;
+  }
+  
+  .words span:nth-child(4) {
+    animation-delay: 1.5s;
+  }
+  
+  .words span:nth-child(5) {
+    animation-delay: 2s;
+  }
+  
+  .words span:nth-child(6) {
+    animation-delay: 2.5s;
+  }
+  
+  .words span:nth-child(7) {
+    animation-delay: 3s;
+  }
+  
+
+/* End animation Manopo */
+
+
+
+* {
+    box-sizing: border-box;
+}
+/* h1 {
+    color: #E84A5F;
+    margin-bottom: 30px;
+} */
+
+
+
+#charactersList {
+    padding-inline-start: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-gap: 20px;
+}
+
+.character {
+    list-style-type: none;
+    background-color: #eaeaea;
+    border-radius: 3px;
+    padding: 10px 20px;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas:
+        'name image'
+        'house image';
+    text-align: left;
+}
+
+.character > h2 {
+    grid-area: name;
+    margin-bottom: 0px;
+}
+
+.character > p {
+    grid-area: house;
+    margin: 0;
+    margin-top: 1%;
+}
+
+.character > img {
+    max-height: 100px;
+    grid-area: image;
+}
+
+#searchBar {
+    width: 100%;
+    height: 32px;
+    border-radius: 50px;
+    border: 3px solid #ffffff;
+    padding: 4px 10px;
+    font-size: 20px;
+}
+
+#searchWrapper {
+    position: relative;
+}
+
+#searchWrapper::after {
+    content: '🔍';
+    position: absolute;
+    top: 20%;
+    right: 1%;
+}
+
+/* li */
+/* .box {
+    transition: box-shadow .3s;
+    border-radius:10px;
+    border: 1px solid #ccc;
+    background: #fff;
+    float: left;
+    
+  }
+  .box:hover {
+    box-shadow: 0 0 11px rgba(33,33,33,.2); 
+  } */
+
+  /* li{
+
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.548);
+} */

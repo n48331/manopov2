@@ -1,0 +1,194 @@
+{% extends 'base.html' %}
+{% load static %}
+{% static "images" as BaseUrl %}
+
+{% block css %}
+
+<link rel="icon" href="{% static 'images/Earth2.jpg' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.1/css/materialize.min.css" integrity="sha256-qj3p6P1fJIV+Ndv7RW1ovZI2UhOuboj9GcODzcNFIN8=" crossorigin="anonymous" />
+
+<link
+rel="stylesheet"
+href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'css\navbar.css' %}" >
+
+{% endblock css %}
+{% block content %}
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>MANOPO {% block title %} 
+          {% endblock title %}</title>
+        
+    </head>
+    <body>
+
+        
+
+        
+
+        
+        <div class="container">
+            
+            <div class="navigation">
+                <ul>
+                  <li class="list active" data-color="#dc143c">
+                    <a href="#">
+                      <span class="icon"><i class="far fa-home"></i></span>
+                      <span class="title">Home</span>
+                    </a>
+                  </li>
+                  <li class="list" data-color="#3c40c6">
+                    <a href="about">
+                      <span class="icon"><i class="far fa-info"></i></span>
+                      <span class="title">About</span>
+                    </a>
+                  </li>
+                  <li class="list" data-color="#05c46b">
+                    <a href="{% url 'create_gaurdian' %}">
+                      <span class="icon"><i class="far fa-user-plus"></i></span>
+                      <span class="title">Create Gaurdian</span>
+                    </a>
+                  </li>
+           
+                  <li class="list" data-color="#ffa801">
+                    <a href="profile">
+                      <span class="icon"><i class="far fa-address-card"></i></span>
+                      <span class="title">Profile</span>
+                    </a>
+                  </li>
+                  <div class="indicator"></div>
+                </ul>
+              </div>
+              <script>
+                let list = document.querySelectorAll(".list");
+                for (let i = 0; i < list.length; i++) {
+                  list[i].onmouseover = function () {
+                    let j = 0;
+                    while (j < list.length) {
+                      list[j++].className = "list";
+                    }
+                    list[i].className = "list active";
+                  };
+                }
+               
+              </script>
+            <!-- <h1>MANOPO</h1> -->
+
+            <div class="words word-1">
+                <span>M</span>
+                <span>A</span>
+                <span>N</span>
+                <span>O</span>
+                <span>P</span>
+                <span>O</span>
+              </div>
+
+
+            <div id="searchWrapper">
+                <input
+                    type="text"
+                    name="searchBar"
+                    id="searchBar"
+                    placeholder="  search for a name or house"
+                />
+            </div><br>
+
+            <ul id="charactersList">
+      
+            </ul>
+            
+            
+        </div><br><br>
+<!-- Footer -->
+<footer style="position:relative;
+bottom:0;
+width:100%;">
+
+  <!-- Copyright -->
+  <br><br><div >© 2021 Copyright:
+    <a style="color: rgb(4, 17, 75);" href="{% url 'login' %}"> manopo</a>
+  </div>
+  <div>Current User : {{user}}</div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+
+        {% endblock content %}
+
+{% block scripts %}
+<script>
+    const charactersList = document.getElementById('charactersList');
+    const searchBar = document.getElementById('searchBar');
+    let hpCharacters = [];
+    
+    searchBar.addEventListener('keyup', (e) => {
+        const searchString = e.target.value.toLowerCase();
+    
+        const filteredCharacters = hpCharacters.filter((character) => {
+            return (
+                character.name.toLowerCase().includes(searchString) ||
+                character.house.toLowerCase().includes(searchString)
+            );
+        });
+        displayCharacters(filteredCharacters);
+    });
+    
+    const loadCharacters = async () => {
+        try {
+    
+            const gres = JSON.parse("{{gdata|escapejs}}");
+
+            const mres = JSON.parse("{{mdata|escapejs}}");
+
+            const res = gres.concat(mres)
+    console.log(res)
+
+            hpCharacters = res;
+  
+            displayCharacters(hpCharacters);
+        } catch (err) {
+            console.error(err);
+        }
+    };
+    
+    const displayCharacters = (characters) => {
+        const htmlString = characters
+            .map((character) => {
+                if (character.isgad == true) {
+                    color = "#BFFFFF";
+                    id = character.id
+                }else{
+                    color = "#FEFFFF"
+                    id = character.retaled_to_id
+                }
+                return `
+               <li style="background-color: ${color}; border-radius: 20px; box-shadow: 0 0 60px rgba(0, 0, 0, 0.548);" class="character" onclick = "location.href = 'details/${id}/';">
+                    <h5 style="font-size:150%;">${character.name}</h5>
+                    <p>House: ${character.house}</p>
+                    <img src="../media/${character.image}"></img>
+                </li>
+            `;
+            })
+            .join('');
+        charactersList.innerHTML = htmlString;
+    };
+    
+    loadCharacters();
+
+</script>
+{% endblock scripts %}
+    </body>
+</html>
+

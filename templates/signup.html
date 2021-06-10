@@ -1,0 +1,227 @@
+{% extends 'base.html' %}
+{% load static %}
+<title>Monopo SignUp</title>
+{% block css %}
+<meta charset="UTF-8">
+<link rel="icon" href="{% static 'images/Earth2.jpg' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  /* user-select: none; */
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+html,body{
+  height: 100%;
+}
+body{
+  display: grid;
+  place-items: center;
+  background: #dde1e7;
+  text-align: center;
+}
+.content{
+  width: 330px;
+  padding: 40px 30px;
+  background: #dde1e7;
+  border-radius: 10px;
+  box-shadow: -3px -3px 7px #ffffff73,
+               2px 2px 5px rgba(94,104,121,0.288);
+}
+.content .text{
+  font-size: 33px;
+  font-weight: 600;
+  margin-bottom: 35px;
+  color: #595959;
+}
+.field{
+  height: 50px;
+  width: 100%;
+  display: flex;
+  position: relative;
+}
+.field:nth-child(2){
+  margin-top: 20px;
+}
+.field input{
+  height: 100%;
+  width: 100%;
+  padding-left: 45px;
+  outline: none;
+  border: none;
+  font-size: 18px;
+  background: #dde1e7;
+  color: #595959;
+  border-radius: 25px;
+  box-shadow: inset 2px 2px 5px #BABECC,
+              inset -5px -5px 10px #ffffff73;
+}
+.field input:focus{
+  box-shadow: inset 1px 1px 2px #BABECC,
+              inset -1px -1px 2px #ffffff73;
+}
+.field span{
+  position: absolute;
+  color: #595959;
+  width: 50px;
+  line-height: 50px;
+}
+.field label{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 45px;
+  pointer-events: none;
+  color: #666666;
+}
+.field input:valid ~ label{
+  opacity: 0;
+}
+.forgot-pass{
+  text-align: left;
+  margin: 10px 0 10px 5px;
+}
+.forgot-pass a{
+  font-size: 16px;
+  color: #3498db;
+  text-decoration: none;
+}
+.forgot-pass:hover a{
+  text-decoration: underline;
+}
+button{
+  margin: 15px 0;
+  width: 100%;
+  height: 50px;
+  font-size: 18px;
+  line-height: 50px;
+  font-weight: 600;
+  background: #dde1e7;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #595959;
+  box-shadow: 2px 2px 5px #BABECC,
+             -5px -5px 10px #ffffff73;
+}
+button:focus{
+  color: #3498db;
+  box-shadow: inset 2px 2px 5px #BABECC,
+             inset -5px -5px 10px #ffffff73;
+}
+.sign-up{
+  margin: 10px 0;
+  color: #595959;
+  font-size: 16px;
+}
+.sign-up a{
+  color: #3498db;
+  text-decoration: none;
+}
+.sign-up a:hover{
+  text-decoration: underline;
+}
+</style>
+<style>
+    .neu {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 6rem;
+        margin-right: 1%;
+        width:100%;
+        margin-top:10px;
+        font-weight: bolder;
+        text-align:center;
+        color: #eeeeee;
+        text-shadow: 5px 5px 8px #00000027, -5px -5px 8px #ffffff;
+
+
+      }
+      
+</style>
+{% endblock css %}
+
+{% block content %}
+<div class="neu">MANOPO</div>
+
+  <!-- <h2>Sign up</h2>
+  <form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+      <p>
+        {{ field.label_tag }}<br>
+        {{ field }}
+        {% if field.help_text %}
+          <small style="color: grey">{{ field.help_text }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+      </p>
+    {% endfor %}
+    <button type="submit">Sign up</button>
+  </form> -->
+  <div class="content">
+    <div class="text">
+       Sign Up
+    </div>
+    <form method="post">
+        {% csrf_token %}
+       <div class="field">  
+        {{ form.username }} 
+          <span class="fas fa-user"></span>
+          <label>Username</label>  
+       </div><br>
+
+       <div class="field">   
+        {{ form.email }} 
+        <span class="fas fa-user"></span>
+        <label>Email</label>
+     </div><br>
+
+       <div class="field">
+        {{ form.password1 }}
+          <span class="fas fa-lock"></span>
+          <label>Password</label>
+       </div><br>
+
+       <div class="field">
+        {{ form.password2 }}
+          <span class="fas fa-lock"></span>
+          <label>Confirm Password</label>
+       </div>
+
+       <button>Sign Up</button>
+       <div class="sign-up">
+          Already a member?
+          <a href="{% url 'login' %}">signin now</a>
+       </div>
+    </form>
+ </div>
+ <div>
+	{% for message in messages %}
+	<h3> {{message}}  </h3>
+  <div><br>
+    Your password can’t be too similar to your other personal information.,<br>
+    Your password must contain at least 8 characters.<br>
+    Your password can’t be a commonly used password.<br>
+    Your password can’t be entirely numeric.<br>
+    </div><br><br>
+	{% endfor %}</div>
+
+  <footer >
+
+    <!-- Copyright -->
+    <br><br><div >© 2021 Copyright:
+      <a style="color: rgb(4, 17, 75);" href="{% url 'login' %}"> manopo</a>
+    </div>
+    
+    <!-- Copyright -->
+    
+    </footer>
+{% endblock %}
+{% block scripts %}{% endblock scripts %}

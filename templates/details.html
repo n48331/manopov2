@@ -1,0 +1,380 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+
+    <title>MANOPO</title>
+    {% block css %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="{% static 'images/Earth2.jpg' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css" integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc=" crossorigin="anonymous" />    
+    <link rel="stylesheet" href="{% static 'css\navbar.css' %}" >
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link
+rel="stylesheet"
+href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+crossorigin="anonymous">
+    
+    <style type="text/css">
+      body{margin-top:20px;
+      background-color: #2B7A7B;
+      }
+      
+      .team-list img {
+        width: 50%;
+      }
+      
+      .team-list .content {
+        width: 50%;
+      }
+      
+      .team-list .content .follow {
+        position: absolute;
+        bottom: 24px;
+      }
+      
+      .team-list:hover {
+        -webkit-transform: scale(1.05);
+                transform: scale(1.05);
+      }
+      
+      .team, .team-list {
+        -webkit-transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0s;
+        transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0s;
+      }
+      
+      .team .content .title, .team-list .content .title {
+        font-size: 18px;
+      }
+      
+      .team .overlay {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: 0;
+        -webkit-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+      }
+      
+      .team .member-position, .team .team-social {
+        position: absolute;
+        bottom: -35px;
+        right: 0;
+        left: 0;
+        margin: auto 10%;
+        z-index: 99;
+      }
+      
+      .team .team-social {
+        bottom: 40px;
+        opacity: 0;
+        -webkit-transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0s;
+        transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0s;
+      }
+      
+      .team:hover {
+        -webkit-transform: translateY(-7px);
+                transform: translateY(-7px);
+        -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.781);
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.651);
+      }
+      
+      .team:hover .overlay {
+        opacity: 0.6;
+      }
+      
+      .team:hover .team-social {
+        opacity: 1;
+      }
+      
+      @media (max-width: 768px) {
+        .team-list img,
+        .team-list .content {
+          width: 100%;
+          float: none !important;
+        }
+        .team-list img .follow,
+        .team-list .content .follow {
+          position: relative;
+          bottom: 0;
+        }
+      }
+      
+      .social-icon.social li a {
+          color: #ffffff;
+          border-color: #ffffff;
+      }
+      .social-icon li a {
+          color: #35404e;
+          border: 1px solid #35404e;
+          display: inline-block;
+          height: 32px;
+          text-align: center;
+          font-size: 15px;
+          width: 32px;
+          line-height: 30px;
+          -webkit-transition: all 0.4s ease;
+          transition: all 0.4s ease;
+          overflow: hidden;
+          position: relative;
+      }
+      .rounded {
+          border-radius: 5px !important;
+      }
+      
+      .para-desc {
+          max-width: 600px;
+      }
+      .text-muted {
+          color: #8492a6 !important;
+      }
+      
+      .section-title .title {
+          letter-spacing: 0.5px;
+          font-size: 30px;
+      }
+      
+      </style>
+
+<style>
+  
+.wrap {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  min-width: 300px;
+  min-height: 60px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+  font-weight: 700;
+  color: #313133;
+  background: #3AAFA9;
+background: linear-gradient(90deg, rgba(129,230,217,1) 0%, rgba(79,209,197,1) 100%);
+  border: none;
+  border-radius: 1000px;
+  box-shadow: 12px 12px 24px rgba(79,209,197,.64);
+  transition: all 0.3s ease-in-out 0s;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  padding: 10px;
+  }
+
+button::before {
+content: '';
+  border-radius: 1000px;
+  min-width: calc(300px + 12px);
+  min-height: calc(60px + 12px);
+  border: 6px solid #3AAFA9;
+  box-shadow: 0 0 60px rgba(0,255,203,.64);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: all .3s ease-in-out 0s;
+}
+
+.button:hover, .button:focus {
+  color: #313133;
+  transform: translateY(-6px);
+}
+
+button:hover::before, button:focus::before {
+  opacity: 1;
+}
+
+button::after {
+  content: '';
+  width: 30px; height: 30px;
+  border-radius: 100%;
+  border: 6px solid #00FFCB;
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ring 1.5s infinite;
+}
+
+button:hover::after, button:focus::after {
+  animation: none;
+  display: none;
+}
+
+@keyframes ring {
+  0% {
+    width: 30px;
+    height: 30px;
+    opacity: 1;
+  }
+  100% {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+  }
+}
+</style>
+    
+    {% endblock css %}
+
+</head>
+<body>
+{% block content %}
+<div class="container bootdey">
+  <div class="row">
+      <div class="col-12 text-center">
+          <div class="section-title mb-4 pb-2">
+              <h1>{{gdata.house }}</h1>
+              <h6>Family Members</h6>
+              <p>Created By User : {{gdata.author}}</p>
+              
+             
+          </div>
+      </div>
+     
+  <div class="row">
+      <div class="col-lg-3 col-md-6 col-12 mt-4 pt-2">
+          <div class="team text-center rounded p-3 py-4">
+              <img src="../../../media/{{gdata.image}}" class="img-fluid avatar avatar-medium shadow rounded-pill" alt="">
+              <div class="content mt-3">
+                  <h4 class="title mb-0">{{gdata.name}}</h4>
+                  <h5>{{gdata.phone }}</h5>
+                  {% if gdata.author == user %}
+                  <div>
+                  <ul class="list-unstyled mt-3 social-icon social mb-0">
+
+                      <li class="list-inline-item"><a href="{% url 'update_gaurdian' gdata.id %}" class="rounded"><i class="mdi mdi-account-details" title="Update or delete"></i></a></li>
+                      <li class="list-inline-item"><a href="{% url 'create_member' gdata.id %}" class="rounded"><i class="mdi mdi-account-plus" title="Add Member"></i></a></li>
+
+                    </ul><!--end icon-->
+                  </div>
+                  {% endif %}
+              </div>
+          </div>
+      </div><!--end col-->
+      {% for dat in data %}
+      <div class="col-lg-3 col-md-6 col-12 mt-4 pt-2">
+          <div class="team text-center rounded p-3 py-4">
+              <img src="../../../media/{{dat.image}}" class="img-fluid avatar avatar-medium shadow rounded-pill" alt="">
+              <div class="content mt-3">
+                  <h4 class="title mb-0">{{ dat.name }}</h4>
+                  <h5>{{ dat.phone }}</h5>
+                  {% if gdata.author == user %}
+                  <ul class="list-unstyled mt-3 social-icon social mb-0">
+                      <li class="list-inline-item"><a href="{% url 'update_member' dat.id gdata.id %}" class="rounded"><i class="mdi mdi-account-details" title="Update or delete"></i></a></li>
+                     
+                  </ul><!--end icon-->
+                  {% endif %}
+              </div>
+          </div>
+      </div><!--end col-->
+      {% endfor %}
+      
+      <!--end col-->
+      
+      <!--end col-->
+  </div><!--end row-->
+</div>
+ 
+      
+     
+       
+        
+
+
+
+<br><br><div class="wrap"><button class="button" onclick = "location.href = '../../map/{{gdata.id}}/';">
+    <span>Locate on Map</span>
+  </button></div><br>
+
+  <!-- http://www.google.com/maps/place/49.46800006494457,17.11514008755796 -->
+  <!-- www.google.com/maps/place/{{gdata.lat}}/{{gdata.lng}}/ -->
+  <!-- http://www.google.com/maps/place/{{gdata.lat}},{{gdata.lng}}/@{{gdata.lat}},{{gdata.lng}},17z -->
+  <div class="wrap"><a href="http://www.google.com/maps/place/{{gdata.lat}},{{gdata.lng}}/@{{gdata.lat}},{{gdata.lng}},17z/data=!3m1!1e3"><button class="button">
+    <span>Locate on Google Map</span>
+  </button></a></div>
+
+<!-- navbar -->
+
+<div class="navigation">
+  <ul>
+    <li class="list active" data-color="#dc143c">
+      <a href="{% url 'index' %}">
+        <span class="icon"><i class="far fa-home"></i></span>
+        <span class="title">Home</span>
+      </a>
+    </li>
+    <li class="list" data-color="#3c40c6">
+      <a href="{% url 'about' %}">
+        <span class="icon"><i class="far fa-info"></i></span>
+        <span class="title">About</span>
+      </a>
+    </li>
+    <li class="list" data-color="#05c46b">
+      <a href="{% url 'create_gaurdian' %}">
+        <span class="icon"><i class="far fa-user-plus"></i></span>
+        <span class="title">Create Gaurdian</span>
+      </a>
+    </li>
+
+    <li class="list" data-color="#ffa801">
+      <a href="{% url 'profile' %}">
+        <span class="icon"><i class="far fa-address-card"></i></span>
+        <span class="title">Profile</span>
+      </a>
+    </li>
+    <div class="indicator"></div>
+  </ul>
+</div>
+<script>
+  let list = document.querySelectorAll(".list");
+  for (let i = 0; i < list.length; i++) {
+    list[i].onmouseover = function () {
+      let j = 0;
+      while (j < list.length) {
+        list[j++].className = "list";
+      }
+      list[i].className = "list active";
+    };
+  }
+ 
+</script>
+<!-- navbar -->
+  <footer class="page-footer font-small blue">
+
+    <!-- Copyright -->
+    <br><br><div class="footer-copyright text-center py-3">© 2021 Copyright:
+      <a href="{% url 'index' %}"> manopo</a><br><br><br>
+    </div>
+    <!-- Copyright -->
+  
+  </footer>
+  <!-- Footer -->
+
+{% endblock content %}
+{% block scripts %}
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+   
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<script type="text/javascript">
+
+</script>
+{% endblock scripts %}
+</body>
+</html>

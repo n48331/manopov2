@@ -1,0 +1,479 @@
+{%  extends 'base.html' %}
+{% load static %}
+{% block css %}
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" /> 
+<link rel="icon" href="{% static 'images/Earth2.jpg' %}"> 
+
+<style>
+	@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,900);
+* {
+  padding: 0;
+  margin: 0;
+}
+input {
+  outline: none;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  font-family: 'Roboto', sans-serif;
+ background: #2B7A7B;
+  overflow: hidden;
+}
+.panel {
+  width: 400px;
+  height: 500px;
+  -webkit-border-radius: 10px;
+     -moz-border-radius: 10px;
+          border-radius: 10px;
+  -webkit-box-shadow: 0 0 10px black;
+     -moz-box-shadow: 0 0 10px black;
+          box-shadow: 0 0 10px black;
+  background: #141519;
+  margin: 100px auto;
+  text-align: center;
+}
+.panel .state {
+  margin-top: 5px;
+  width: 100%;
+  height: 155px;
+  color: white;
+  font-size: 20px;
+}
+.panel .state i.fa-ban {
+  font-size: 40px;
+}
+.panel .state i.fa-unlock-alt {
+  font-size: 25px;
+  color: white;
+  line-height: 33px;
+  height: 30px;
+  width: 30px;
+  display: inline-block;
+  -webkit-border-radius: 50%;
+     -moz-border-radius: 50%;
+          border-radius: 50%;
+  border: 2px solid;
+}
+.panel .state h2 {
+  font-weight: 400;
+}
+.panel .form {
+  width: 340px;
+  margin: 5px auto;
+}
+
+
+
+.panel input[type='text'] {
+  background-color: #22232a;
+  -webkit-border-radius: 45px;
+     -moz-border-radius: 45px;
+          border-radius: 45px;
+  font-size: 15px;
+  height: 45px;
+  border: none;
+  padding-left: 15px;
+  width: -webkit-calc(100% - 15px);
+  width: -moz-calc(100% - 15px);
+  width: calc(100% - 15px);
+  margin-bottom: 10px;
+}
+.panel input[type='text'][placeholder] {
+  color: #656d79;
+  font-size: 15px;
+  font-weight: 500;
+}
+.panel .fack {
+  margin-top: 30px;
+  font-size: 14px;
+}
+.panel .fack i.fa {
+  text-decoration: none;
+  color: #fff;
+  vertical-align: middle;
+  font-size: 20px;
+  margin-right: 5px;
+}
+.panel .fack a:link {
+  color: #616973;
+}
+.panel .fack a:visited {
+  color: #555c65;
+}
+
+</style>
+
+<!-- <style> 
+	input[type=button], input[type=submit], input[type=reset] {
+	  background-color: #4CAF50;
+	  border: none;
+	  color: white;
+	  padding: 16px 32px;
+	  text-decoration: none;
+	  margin: 4px 2px;
+	  cursor: pointer;
+	  border-radius: 10px;
+	}
+	</style> -->
+<style>
+	*,
+	*:after,
+	*::before {
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+	
+	body {
+		font-family: 'Raleway', sans-serif;
+	}
+	
+	nav a {
+		position: relative;
+		display: inline-block;
+		margin: 15px 25px;
+		outline: none;
+		color: #fff;
+		text-decoration: none;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		font-weight: 400;
+		text-shadow: 0 0 1px rgba(255,255,255,0.3);
+		font-size: 1.35em;
+	}
+	
+	nav a:hover,
+	nav a:focus {
+		outline: none;
+	}
+	
+	/* Effect 20: 3D side */
+.cl-effect-20 a {
+	line-height: 2em;
+	-webkit-perspective: 800px;
+	-moz-perspective: 800px;
+	perspective: 800px;
+}
+
+.cl-effect-20 a span {
+	position: relative;
+	display: inline-block;
+	padding: 3px 15px 0;
+	background: #3AAFA9;
+	box-shadow: inset 0 3px #3AAFA9;
+	-webkit-transition: background 0.6s;
+	-moz-transition: background 0.6s;
+	transition: background 0.6s;
+	-webkit-transform-origin: 50% 0;
+	-moz-transform-origin: 50% 0;
+	transform-origin: 50% 0;
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	-webkit-transform-origin: 0% 50%;
+	-moz-transform-origin: 0% 50%;
+	transform-origin: 0% 50%;
+}
+
+.cl-effect-20 a span::before {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #fff;
+	color: #3AAFA9;
+	content: attr(data-hover);
+	-webkit-transform: rotateX(270deg);
+	-moz-transform: rotateX(270deg);
+	transform: rotateX(270deg);
+	-webkit-transition: -webkit-transform 0.6s;
+	-moz-transition: -moz-transform 0.6s;
+	transition: transform 0.6s;
+	-webkit-transform-origin: 0 0;
+	-moz-transform-origin: 0 0;
+	transform-origin: 0 0;
+	pointer-events: none;
+}
+
+.cl-effect-20 a:hover span,
+.cl-effect-20 a:focus span {
+	background: #3AAFA9;
+}
+
+.cl-effect-20 a:hover span::before,
+.cl-effect-20 a:focus span::before {
+	-webkit-transform: rotateX(10deg);	
+	-moz-transform: rotateX(10deg);
+	transform: rotateX(10deg);
+}
+	
+	
+	
+	
+	/* Effect 18: cross */
+	.cl-effect-18 {
+		position: relative;
+		z-index: 1;
+	}
+	
+	.cl-effect-18 a {
+		padding: 0 5px;
+		color: #b4770d;
+		font-weight: 700;
+		-webkit-transition: color 0.3s;
+		-moz-transition: color 0.3s;
+		transition: color 0.3s;
+	}
+	
+	.cl-effect-18 a::before,
+	.cl-effect-18 a::after {
+		position: absolute;
+		width: 100%;
+		left: 0;
+		top: 50%;
+		height: 2px;
+		margin-top: -1px;
+		background: #b4770d;
+		content: '';
+		z-index: -1;
+		-webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+		-moz-transition: -moz-transform 0.3s, opacity 0.3s;
+		transition: transform 0.3s, opacity 0.3s;
+		pointer-events: none;
+	}
+	
+	.cl-effect-18 a::before {
+		-webkit-transform: translateY(-20px);
+		-moz-transform: translateY(-20px);
+		transform: translateY(-20px);
+	}
+	
+	.cl-effect-18 a::after {
+		-webkit-transform: translateY(20px);
+		-moz-transform: translateY(20px);
+		transform: translateY(20px);
+	}
+	
+	.cl-effect-18 a:hover,
+	.cl-effect-18 a:focus {
+		color: #fff;
+	}
+	
+	.cl-effect-18 a:hover::before,
+	.cl-effect-18 a:hover::after,
+	.cl-effect-18 a:focus::before,
+	.cl-effect-18 a:focus::after {
+		opacity: 0.7;
+	}
+	
+	.cl-effect-18 a:hover::before,
+	.cl-effect-18 a:focus::before {
+		-webkit-transform: rotate(45deg);
+		-moz-transform: rotate(45deg);
+		transform: rotate(45deg);
+	}
+	
+	.cl-effect-18 a:hover::after,
+	.cl-effect-18 a:focus::after {
+		-webkit-transform: rotate(-45deg);
+		-moz-transform: rotate(-45deg);
+		transform: rotate(-45deg);
+	}
+	
+
+	@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700|Raleway:400,300,700);
+	@font-face {
+		font-family: 'codropsicons';
+		src:url('../fonts/codropsicons/codropsicons.eot');
+		src:url('../fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'),
+			url('../fonts/codropsicons/codropsicons.woff') format('woff'),
+			url('../fonts/codropsicons/codropsicons.ttf') format('truetype'),
+			url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
+		font-weight: normal;
+		font-style: normal;
+	}
+	
+	.container > header,
+	.codrops-top {
+		font-family: 'Lato', Arial, sans-serif;
+	}
+	
+	.container > header {
+		margin: 0 auto;
+		padding: 2em;
+		text-align: center;
+		color: #89867e;
+	}
+	
+	.container > header h1 {
+		font-size: 2.625em;
+		line-height: 1.3;
+		margin: 0;
+		font-weight: 300;
+	}
+	
+	.container > header span {
+		display: block;
+		font-size: 60%;
+		color: #ceccc6;
+		padding: 0 0 0.6em 0.1em;
+	}
+	
+	/* To Navigation Style */
+	.codrops-top {
+		background: #fff;
+		background: rgba(255, 255, 255, 0.6);
+		text-transform: uppercase;
+		width: 100%;
+		font-size: 0.69em;
+		line-height: 2.2;
+	}
+	
+	.codrops-top a {
+		text-decoration: none;
+		padding: 0 1em;
+		letter-spacing: 0.1em;
+		color: #888;
+		display: inline-block;
+	}
+	
+	.codrops-top a:hover {
+		background: rgba(255,255,255,0.95);
+		color: #716d62;
+	}
+	
+	.codrops-top span.right {
+		float: right;
+	}
+	
+	.codrops-top span.right a {
+		float: left;
+		display: block;
+	}
+	
+	.codrops-icon:before {
+		font-family: 'codropsicons';
+		margin: 0 4px;
+		speak: none;
+		font-style: normal;
+		font-weight: normal;
+		font-variant: normal;
+		text-transform: none;
+		line-height: 1;
+		-webkit-font-smoothing: antialiased;
+	}
+	
+	.codrops-icon-drop:before {
+		content: "\e001";
+	}
+	
+	.codrops-icon-prev:before {
+		content: "\e004";
+	}
+	
+	.container > section {
+		margin: 0 auto;
+		padding: 5em 3em;
+		text-align: center;
+	}
+	
+
+	
+	.color-6 {
+		background: #000000;
+	}
+
+	@media screen and (max-width: 25em) {
+	
+		.codrops-icon span {
+			display: none;
+		}
+	
+	}
+
+</style>	
+<style> 
+	input[type=button], input[type=submit], input[type=reset] {
+	  background-color: #3AAFA9;
+	  font: 1em sans-serif;
+	  border: none;
+	  color: rgb(0, 0, 0);
+	  padding: 16px 32px;
+	  text-decoration: none;
+	  margin: 4px 2px;
+	  cursor: pointer;
+	  border-radius: 5px;
+	}
+	</style>
+{% endblock css %}
+{% block content %}
+
+<br>
+<div class="panel">
+	<div class="state">
+		<div class="form">
+<div class="row">
+	<div class="col-md-6">
+
+
+
+			<i class="fa "></i><br><h3>Are you sure you want to delete {{type}} "{{item}}"?</h3><br><br><br><br><br>
+			{% if type == 'gad' %}
+			<form action="{% url 'delete_gaurdian' item.id  %}" method="POST">
+			{% else %}
+			<form action="{% url 'delete_member' item.id  %}" method="POST">
+			{% endif %}
+				
+				{% csrf_token %}
+
+				<section class="color-6">
+					<nav class="cl-effect-18">
+				<a href="{% url 'details' pk %}">Cancel</a>
+			</nav>
+		</section>
+				<section class="color-1">
+					<nav class="cl-effect-20">
+			<a>	<span data-hover="Delete"><input class="btn btn-danger" type="submit" name="Confirm"></span></a>
+			</nav>
+		</section>
+
+			</form>
+
+	</div>
+</div>
+</div>
+</div>
+<!-- <div class="panel">
+	<div class="state"><br><i class="fa fa-unlock-alt"></i><br><h3>Are you sure you want to delete "{{item}}"?</h3></div>
+	<div class="form">
+		<a class="btn btn-warning" href="{% url 'delete_gaurdian' item.id  %}"><div class="login"> Delete </div></a>
+		<a class="btn btn-warning" href="{% url 'index' %}"><div class="login"> Cancel </div></a>
+	</div>
+	<div class="fack">Forgot password?</div> -->
+
+
+{% endblock %}
+{% block scripts %}
+<script>
+	$(document).ready(function() {
+		return $('.login').click(function(event) {
+		  if (false) {
+	  
+		  } else {
+			return $('.state').html('<br><i class="fa fa-ban"></i><br><h2>Error</h2>The email or password you entered is incorrect, please try again.').css({
+			  color: '#eb5638'
+			});
+		  }
+		});
+	  });
+	  
+</script>
+{% endblock scripts %}
